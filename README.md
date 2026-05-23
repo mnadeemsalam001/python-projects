@@ -35,6 +35,85 @@ python report_formatter.py
 
 ---
 
+### `blog_scraper.py` — General-Purpose Blog / Website Scraper
+
+Scrapes articles from any blog and saves each one as a clean Markdown file
+with YAML front matter (title, date, URL, description, word count).
+A CSV summary index is also produced.
+
+**Two modes:**
+- **Auto-discover** — point it at a blog index page; it finds all article links and scrapes them automatically
+- **List mode** — provide a `.txt` file of URLs (one per line)
+
+**Features demonstrated:**
+- HTTP requests with a browser-like User-Agent header
+- HTML parsing with BeautifulSoup (meta tag extraction, DOM traversal)
+- Smart article body detection (walks the DOM to find the content container)
+- HTML → Markdown conversion using `markdownify`
+- YAML front matter generation
+- Polite crawling (configurable delay between requests)
+- Resume support — skips already-scraped files
+- CSV summary index of all scraped articles
+- CLI interface with `argparse` (`--url`, `--list`)
+
+**Output:** One `.md` file per article + `_summary.csv` in the `articles/` folder
+
+**Install dependencies:**
+```bash
+pip install requests beautifulsoup4 markdownify
+```
+
+**Three ways to run it:**
+
+The script accepts optional arguments on the command line that control which URLs to scrape.
+
+---
+
+**Mode 1 — Auto-discover** *(no arguments)*
+```bash
+python blog_scraper.py
+```
+No extra input needed. The script reads `index_url` from the `CONFIG` block at the top of the file, crawls that page, finds all article links automatically, and scrapes them one by one.
+
+Use this when you want to scrape an entire blog.
+
+---
+
+**Mode 2 — Single URL** *(`--url`)*
+```bash
+python blog_scraper.py --url https://blog.python.org/2026/05/python-3145-is-out
+```
+Scrapes exactly one page. Good for testing — try one article first before committing to scraping the whole site.
+
+Use this to test the script or grab one specific page.
+
+---
+
+**Mode 3 — From a file** *(`--list`)*
+
+Create a plain text file `urls.txt` with one URL per line:
+```
+https://blog.python.org/2026/05/python-3145-is-out
+https://blog.python.org/2026/03/jit-on-track
+https://blog.python.org/2026/04/rust-for-cpython-2026-04
+```
+Then run:
+```bash
+python blog_scraper.py --list urls.txt
+```
+The script reads your file and scrapes each URL in it.
+
+Use this when you have a specific set of articles you want, not the whole blog.
+
+---
+
+In all three modes the output is the same — Markdown files saved to the `articles/` folder.
+The only difference is how you tell the script which URLs to scrape.
+
+> **Note:** Always check a site's `robots.txt` and Terms of Service before scraping.
+
+---
+
 ## Requirements
 
 - Python 3.8+

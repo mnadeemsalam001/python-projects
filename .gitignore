@@ -1,0 +1,37 @@
+# ── Script output ─────────────────────────────────────────────────────────────
+articles/           # blog_scraper.py output folder
+#*.xlsx              # report_formatter.py generated Excel files
+*.csv               # any generated CSV files
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# ── Virtual environments ───────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ── Distribution / packaging ──────────────────────────────────────────────────
+dist/
+build/
+*.egg-info/
+
+# ── IDE ────────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.code-workspace
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Secrets / config ──────────────────────────────────────────────────────────
+.env
+*.env
+config.local.py
