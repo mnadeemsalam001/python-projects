@@ -114,6 +114,33 @@ The only difference is how you tell the script which URLs to scrape.
 
 ---
 
+### `google-index-checker/` — Google Index Status Checker
+
+Checks whether your website pages are indexed on Google using the **official Google Search Console URL Inspection API** — the same data you see when you manually inspect a URL in Search Console. Results are tracked in an Excel file with a new date column added on every run, so you can monitor indexing changes over time.
+
+**Features demonstrated:**
+- Google Search Console URL Inspection API with service account authentication
+- Reading and writing Excel files with `openpyxl`
+- Color-coded cells (green = indexed, red = not indexed)
+- Historical tracking — each weekly run appends a new date column
+- Graceful error handling and clear terminal output
+
+**Output:** Color-coded Excel tracker with a running history of indexing status per URL
+
+**Install dependencies:**
+```bash
+pip install google-auth google-api-python-client openpyxl
+```
+
+**Run:**
+```bash
+python check_indexing.py
+```
+
+> **Note:** Requires a verified Google Search Console property and a service account key (`credentials.json`). See the [project README](google-index-checker/README.md) for the full setup guide.
+
+---
+
 ## Requirements
 
 - Python 3.8+
