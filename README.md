@@ -132,7 +132,7 @@ python check_indexing.py
 
 A desktop GUI application that converts common image formats to WebP with adjustable quality and lossless mode. Built with **Tkinter** and **Pillow** — no browser or internet connection required.
 
-![App Screenshot](screenshot.png)
+![App Screenshot](/image-to-webp/screenshot.png)
 
 **Features:**
 - Supports PNG, JPEG, BMP, TIFF, GIF, ICO, and HEIC/HEIF (with optional plugin)
